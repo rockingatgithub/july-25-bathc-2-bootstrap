@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        div {
+            height: 300px;
+            width: 300px;
+            background-color: bisque;
+        }
+
+        #div1 {
+            background-color: chocolate;
+        }
+
+        .grp1 {
+            background-color: darkgray;
+        }
+
+        div p {
+            background-color: rgb(101, 151, 151);
+        }
+
+        div > span {
+            color: brown;
+        }
+
+        div + p {
+            background-color: cornflowerblue;
+        }
+
+        a:active {
+            color: blueviolet;
+        }
+
+        a:visited {
+            color: blanchedalmond;
+        }
+
+        a:hover {
+            color: grey
+        }
+
+        input:focus {
+            color: burlywood;
+        }
+
+        p::first-letter {
+            font-weight: 700;
+        }
+
+        p::first-line {
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li::before {
+            content: "-->";
+        }
+
+        [id="div1"] {
+            background-color: cornsilk;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="div1">
+        Some text here....
+        <p> paragraph in div 
+            <span> text in span inside </span>
+        </p>
+        <span> text in span </span> 
+    </div>
+
+    <div class="grp1">
+        Some text here too....
+        <p> 
+            paragraph in div
+            <span> text in span inside </span>
+        </p>
+    </div>
+
+    <p class="grp1"> Text in para! </p>
+
+    <a href="https://www.google.com" > Go to Google! </a>
+
+    <input type="text" name="name" />
+
+    <p>
+        The line number one.
+        <br/>
+        The line number two.
+
+    </p>
+
+    <ul>
+        <li>
+            BMW
+        </li>
+        <li>
+            Audi
+        </li>
+        <li>
+            Ferrari
+        </li>
+    </ul>
+
+    <div data-id="id1" >
+        The div with ID1.
+    </div>
+    
+</body>
+</html>
