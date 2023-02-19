@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <input type="text" placeholder="Password" id="password" onkeypress="keyPressHandler(event)" />
+    <input type="text" placeholder="Password" id="password" onkeydown="keyDownHandler(event)" /> -->
+    <input type="text" placeholder="Password" id="password" onkeyup="passwordValidator(event)" />
+
+
+
+
+
+    <ul>
+        <li id="upper">
+            Uppercase letter
+        </li>
+        <li id="lower">
+            lowercase letter
+        </li>
+        <li id="number">
+            Number
+        </li>
+        <li id="length">
+            Length must be 10.
+        </li>
+    </ul>
+
+    <script>
+
+        // function keyPressHandler(event) {
+
+        //     console.log(event, event.target.value)
+
+        // }
+
+        // function keyDownHandler(event) {
+
+        //     console.log(event, event.target.value)
+
+        // }
+
+        function passwordValidator(event) {
+
+            console.log(event.key, event.target.value)
+
+            if(event.key >= 'A' && event.key <= 'Z') {
+                document.getElementById('upper').style.textDecoration = 'line-through'
+            }
+
+            if(event.key >= 'a' && event.key <= 'z') {
+                document.getElementById('lower').style.textDecoration = 'line-through'
+            }
+
+            if(event.key >= '0' && event.key <= '9') {
+                document.getElementById('number').style.textDecoration = 'line-through'
+            }
+
+            if(event.target.value.length >= 10) {
+                document.getElementById('length').style.textDecoration = 'line-through'
+            }
+
+            let isUpperCasePresent = false
+            for (let i = 0; i < event.target.value.length; i++) {
+                const char = event.target.value[i];
+                if(char >= 'A' && char <= 'Z') {
+                    isUpperCasePresent = true
+                    break;
+                }
+            }
+            if(!isUpperCasePresent){
+                document.getElementById('upper').style.textDecoration = 'none'
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

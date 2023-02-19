@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        function func1 (a, b=5) { console.log("This is a JS function!", a, b) }
+        // func1() // undefined, undefined
+        // func1(1) // 1, undefined,
+        // func1(1, 4) // 1, 4
+        // func1(1, 4, 5) // 1, 4
+        // func1(3) // 3, 5
+        // func1(4, 6) // 4, 6
+
+        function square (a) {
+            return a*a
+        }
+        
+        function cube (a, cb) {
+            return a * cb(a)
+        }
+
+        // cube(5, square)
+
+
+        function outer (a, b) {
+
+            function inner () {
+                console.log(a, b)
+            }
+            return inner
+        }
+
+        let nested = outer(2, 6)
+        nested()
+
+        outer(2, 6)()
+
+
+    </script>
+    
+</body>
+</html>

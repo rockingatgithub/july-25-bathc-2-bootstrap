@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #div1 {
+            height: 200px;
+            width: 200px;
+            background-color: blanchedalmond;
+        }
+
+    </style>
+
+</head>
+<body  >
+
+    <div>
+        Some text here!
+    </div>
+
+    <button onclick="toggleTheme(event)" >  Dark theme </button>
+
+    <h1 class="grp1" > The heading! </h1>
+
+    <span class="grp1" > It's a span! </span>
+    <span id="first" > It's another span! </span>
+
+
+    <div id="div1" onmouseenter="mouseOverHanlder(event)" onmouseleave="mouseOutHanlder(event)" >
+        A sample div!
+    </div>
+
+
+
+    <!-- use value property to get the value ..... -->
+    <input type="text" name="name" placeholder="Enter a name!" id="text-input" />
+
+    <button id="button" onclick="clickHandler(event)"  >  Click!  </button>
+
+
+    <script>
+
+        let buttonel = document.getElementById('button')
+        // buttonel.addEventListener('click', clickHandler)
+
+        function clickHandler (event) {
+            console.log('button clicked!', event, event.target)
+        }
+
+        function mouseOverHanlder (event) {
+            event.target.style.backgroundColor = 'grey'
+        }
+
+        function mouseOutHanlder (event) {
+            event.target.style.backgroundColor = 'blanchedalmond'
+        }
+
+        function toggleTheme (event) {
+            let currentColor = document.body.style.color
+            console.log(currentColor)
+
+            if(currentColor === 'whitesmoke') {
+                document.body.style.backgroundColor = 'white'
+                document.body.style.color = 'black'
+                event.target.innerText = 'Dark Theme'
+            } else {
+                document.body.style.backgroundColor = 'grey'
+                document.body.style.color = 'whitesmoke'
+                event.target.innerText = 'Light Theme'
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>
