@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: 1px solid black;
+        }
+        table {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <table onclick="console.log(event, event.target)" >
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                2
+            </td>
+            <td>
+                3
+            </td>
+        </tr>
+        <tr>
+            <td>
+                4
+            </td>
+            <td>
+                5
+            </td>
+            <td>
+                6
+            </td>
+        </tr>
+        <tr>
+            <td>
+                7
+            </td>
+            <td>
+                8
+            </td>
+            <td>
+                9
+            </td>
+        </tr>
+    </table> -->
+    
+    <h3>Clock</h3>
+    <div id="time-box"  >
+
+    </div>
+
+    <h3> Alarm Clock </h3>
+
+    <input type="number" min="0" max="23" id="hour" /> : 
+    <input type="number" min="0" max="59" id="minute" /> : 
+    <input type="number" min="0" max="59" id="second" />
+
+    <button onclick="setAlarmHandler()" > Set Alarm </button>
+
+    <h3> Stop Watch </h3>
+
+    <div id="elapsed-time" >
+
+    </div>
+
+    <div>
+        <button onclick="startWatchHandler()" >Start</button>
+        <button onclick="stopWatchHandler()" >Stop</button>
+        <button onclick="resetWatchHandler()" >Reset</button>
+
+    </div>
+
+
+    <script>
+
+        const timeBox = document.getElementById('time-box')
+
+        let setIntervalID = setInterval (clockHandler, 1000)
+
+        function clockHandler () {
+            const currentTime = new Date()
+            const currentHours = currentTime.getHours()
+            const currentMinutes = currentTime.getMinutes()
+            const currentSeconds = currentTime.getSeconds()
+            const formattedSeconds = currentSeconds < 10 ? '0' + currentSeconds : currentSeconds
+            timeBox.innerText = `${currentHours} : ${currentMinutes} : ${formattedSeconds}`
+        }
+
+        function setAlarmHandler () {
+            const hourValue = document.getElementById('hour').value
+            const minuteValue = document.getElementById('minute').value
+            const secondValue = document.getElementById('second').value
+
+            const currentTime = new Date()
+            const currentHours = currentTime.getHours()
+            const currentMinutes = currentTime.getMinutes()
+            const currentSeconds = currentTime.getSeconds()
+
+            const timeDifference =  ((parseInt(hourValue) - currentHours) * 60 * 60 + 
+            (parseInt(minuteValue) - currentMinutes) * 60 + (parseInt(secondValue) - currentSeconds)) * 1000
+
+            console.log("the diff", timeDifference)
+            setTimeout(() => {alert("Alarm up")}, timeDifference)
+
+        }
+
+        let setIntervalID2
+        function startWatchHandler () {
+            const elapsedDiv = document.getElementById ('elapsed-time')
+
+            const startTime = Date.now()
+
+            setIntervalID2 = setInterval(() => {
+
+                const currentTime = Date.now()
+                const elapsedMilliSeconds = currentTime - startTime
+                const elapsedSeconds =  Math.floor((elapsedMilliSeconds / 1000 )) % 60
+                const elapsedMinutes = Math.floor((elapsedMilliSeconds / (1000 * 60))) % 60
+                const elapsedHours = Math.floor(elapsedMilliSeconds / (1000 * 60 * 60))
+
+                const formattedSeconds = elapsedSeconds < 10 ? '0' + elapsedSeconds : elapsedSeconds
+                elapsedDiv.innerText = `${elapsedHours} : ${elapsedMinutes} : ${elapsedSeconds}`
+
+            }, 1000)
+
+        }
+
+        function stopWatchHandler () {
+            clearInterval(setIntervalID2)
+        }
+
+        function resetWatchHandler () {
+            stopWatchHandler()
+            const elapsedDiv = document.getElementById ('elapsed-time')
+            elapsedDiv.innerText = '00 : 00 : 00'
+        }
+
+    </script>
+
+</body>
+</html>
